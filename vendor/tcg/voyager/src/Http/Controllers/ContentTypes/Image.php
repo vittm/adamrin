@@ -11,10 +11,8 @@ class Image extends BaseType
 {
     public function handle()
     {
-        echo dd("fick");
         if ($this->request->hasFile($this->row->field)) {
             $file = $this->request->file($this->row->field);
-
             $path = $this->slug.DIRECTORY_SEPARATOR.date('FY').DIRECTORY_SEPARATOR;
 
             $filename = $this->generateFileName($file, $path);
@@ -22,7 +20,6 @@ class Image extends BaseType
             $image = InterventionImage::make($file);
 
             $fullPath = $path.$filename.'.'.$file->getClientOriginalExtension();
-
             $resize_width = null;
             $resize_height = null;
             if (isset($this->options->resize) && (
@@ -51,7 +48,6 @@ class Image extends BaseType
                     }
                 }
             )->encode($file->getClientOriginalExtension(), $resize_quality);
-
             if ($this->is_animated_gif($file)) {
                 Storage::disk(config('voyager.storage.disk'))->put($fullPath, file_get_contents($file), 'public');
                 $fullPathStatic = $path.$filename.'-static.'.$file->getClientOriginalExtension();
@@ -100,7 +96,6 @@ class Image extends BaseType
                     );
                 }
             }
-
             return $fullPath;
         }
     }
