@@ -9,6 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');            
+        $slides = DB::table('sliders')->get();
+        $specials = DB::table('specials')->get();
+        $products = DB::table('posts')->orderBy('id','desc')->limit('8')->get();
+        $categories = DB::table('categories')->where('parent_id','2')->get();
+        return view('welcome',['slides'=>$slides,'specials'=> $specials,'products'=>$products,'categories'=>$categories]);            
     }
 }

@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'adarim/storage/app/public',
+            'url' => env('APP_URL').'adamarin/storage/app/public',
             'visibility' => 'public',
         ],
 

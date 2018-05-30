@@ -766,6 +766,10 @@ HEADER
 .top-bar{
     background-color: #212121;
 }
+div.top-bar-center {
+    margin: auto;
+    float: inherit;
+}
 .top-bar-left{
     display: table;
     float: left;

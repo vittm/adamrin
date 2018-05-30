@@ -13,7 +13,9 @@
 
 
 Route::get('/', 'HomeController@index');
-
+Route::get('/san-pham/{name}/{id}', 'ListingsController@index');
+Route::get('/chi-tiet/{name}/{title}', 'ListingsController@detail');
+Route::get('/san-pham', 'ListingsController@all');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
